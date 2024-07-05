@@ -29,6 +29,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 	private static final String UPDATE_SELL_PRICE_AND_BUYER = "UPDATE ARTICLES_VENDUS SET prix_vente = :newBid, no_acheteur = :userId WHERE no_article = :articleId";
 	private static final String UPDATE = "UPDATE ARTICLES_VENDUS SET nom_article = :name, description =:description, date_debut_encheres =:startDate, date_fin_encheres=:endDate, prix_initial=:startPrice, prix_vente=:endPrice, no_categorie=:categoryId WHERE no_article = :articleId";
 	
+	private static final String SCHEDULED_COUNT = "SELECT count(*) FROM ARTICLES_VENDUS WHERE no_article > :idMin";
 	
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	
@@ -127,6 +128,14 @@ public class ArticleDAOImpl implements ArticleDAO{
 		mapSqlParameterSource.addValue("articleId", articleId);
 		
 		jdbcTemplate.update(DELETE, mapSqlParameterSource);
+	}
+	
+	@Override
+	public int countArticles() {
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+		mapSqlParameterSource.addValue("idMin", 0);
+		
+		return jdbcTemplate.queryForObject(SCHEDULED_COUNT,mapSqlParameterSource, Integer.class);
 	}
 
 }

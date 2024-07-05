@@ -14,4 +14,5 @@ public interface ArticleDAO {
 	void delete(int articleId);
 	void updateArticle(Article article);
 	void updateSellPriceAndBuyer(int articleId, int bidAmount, int userId);
+	int countArticles();
 }
