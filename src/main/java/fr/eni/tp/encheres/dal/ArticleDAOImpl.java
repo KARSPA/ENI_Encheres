@@ -55,6 +55,18 @@ public class ArticleDAOImpl implements ArticleDAO{
 		this.pickupLocationDAO = pickupLocationDAO;
 		//this.auctionDAO = auctionDAO;
 	}
+	
+	
+	@Override
+	public List<Article> findWithFilters(String SQLQuery, int userId, int categoryId, String textFilter){
+		MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+		mapSqlParameterSource.addValue("userId", userId);
+		mapSqlParameterSource.addValue("categoryId", categoryId);
+		mapSqlParameterSource.addValue("textFilter", textFilter);
+		
+		return jdbcTemplate.query(SQLQuery, mapSqlParameterSource, new ArticleRowMapper());
+	
+	}
 
 	@Override
 	public Article read(int articleId) {

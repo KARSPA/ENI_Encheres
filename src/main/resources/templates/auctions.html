@@ -79,7 +79,7 @@
 			</form>
 		</section>
 		<section class="articles-cards-container">
-			<div th:each="art:${articles}" class="article-card">
+			<div th:each="art : ${articles}" class="article-card">
 				<h3><a th:href="@{/bid(articleId=${art.articleId})}" th:text="${art.articleName}"></a></h3>
 				<p th:text="'Prix : '+${art.currentPrice}+' points'"></p>
 				<p th:text="'Fin de l\'enchère : '+${art.auctionEndDate}"></p>

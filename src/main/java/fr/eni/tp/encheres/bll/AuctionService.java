@@ -3,6 +3,7 @@ package fr.eni.tp.encheres.bll;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 
 import fr.eni.tp.encheres.bo.Article;
@@ -36,5 +37,6 @@ public interface AuctionService {
 	
 	LocalDateTime convertDate(LocalDate date, LocalTime time) throws BusinessException;
 	void cancelArticle(Article article);
+	List<Article> selectArticlesBis(Article article, HashMap<String, Boolean> filters, String buySale, int userId);
 
 }

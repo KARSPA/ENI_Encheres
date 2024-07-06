@@ -17,4 +17,5 @@ public interface ArticleDAO {
 	int countArticles();
 	List<Article> findArticleToUpdateToFinished();
 	List<Article> findArticleToUpdateToStarted();
+	List<Article> findWithFilters(String SQLQuery, int userId, int categoryId, String textFilter);
 }
