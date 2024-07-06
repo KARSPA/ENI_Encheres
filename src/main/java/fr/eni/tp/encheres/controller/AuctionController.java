@@ -65,12 +65,12 @@ public class AuctionController {
 		filters.put("finished", finished);
 		
 		
-		List<Article> articlesListBis = auctionService.selectArticlesBis(article, filters, buySale, userSession.getUserId());
+		List<Article> articlesList = auctionService.selectArticlesBis(article, filters, buySale, userSession.getUserId());
 		
 		//List<Article> articlesList = auctionService.selectArticles(article, userSession, open, current, won, currentVente, notstarted, finished, buySale);
 		
 		model.addAttribute("article", article);
-		model.addAttribute("articles", articlesListBis);
+		model.addAttribute("articles", articlesList);
 		model.addAttribute("open", open);
 		model.addAttribute("current", current);
 		model.addAttribute("won", won);
