@@ -5,6 +5,7 @@
     <title th:text="#{title.saleDetail}"></title>
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/bid-article-detail.css">
+    <link rel="stylesheet" href="/css/error.css">
 	<link rel="icon" href="images/favicon.png"/>
 </head>
 <body>
@@ -71,7 +72,7 @@
             <label for="seller" th:text="#{label.seller}"></label>
             <span th:text="${articleDisplay.seller.pseudo}"></span>
         </div>
-       
+       <div th:if="${globalError}" th:text="${globalError}" class="error-message"></div>
         <div class="bid-offer-container" th:if="${isBidPossible}">
          <form th:action="@{/bid(articleId=${articleDisplay.articleId})}" method="POST">
              <label for="bid-offer" th:text="#{label.myBid}"></label>
@@ -83,7 +84,6 @@
         <div class="modify-auction-container" th:if="${isChangePossible && articleDisplay.seller.userId==userSession.userId}">
         	<a class="button-styled-link" th:href="@{/auctions/modifyArticle(articleId=${articleDisplay.articleId})}" th:text="#{button.modifySale}"></a>
         </div>
-        <div th:if="${globalError}" th:text="${globalError}" class="error-message"></div>
         
         <div class="retrieve-auction-container" th:if="${isAuctionFinished && articleDisplay.seller.userId==userSession.userId}">
        		<a class="button-styled-link" th:href="@{/auctions/retrieveArticle(articleId=${articleDisplay.articleId})}">Retirer l'article</a>

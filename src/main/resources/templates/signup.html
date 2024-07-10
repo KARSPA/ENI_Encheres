@@ -5,6 +5,7 @@
 <title th:text="#{title.signup}"></title>
 <link rel="stylesheet" href="/css/general.css">
 <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/error.css">
 	<link rel="icon" href="images/favicon.png"/>
 </head>
 
@@ -23,6 +24,17 @@
 		<h1 class="title" th:text="#{title.signup2}"></h1>
 		
 		<form th:action="@{/signup}" method="POST" th:object="${user}" class="user-create-form">
+			<div>
+				<div th:replace="~{/fragments/errors/fragment-errors-global::frag-errors}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(pseudo)}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(name)}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(firstName)}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(email)}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(phoneNumber)}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(street)}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(zipCode)}"></div>
+				<div th:replace="~{/fragments/errors/fragment-error::frag-error(city)}"></div>
+			</div>
 			<div class="inputs-container">
 				<div class="pseudo-input">
 					<label for="inputPseudo" th:text="#{label.pseudo}"></label>
@@ -85,15 +97,6 @@
 				<button type="submit" class="button create" th:text="#{button.create}"></button>
 				<a th:href="@{/}" class="button cancel" th:text="#{button.cancel}"></a>
 			</div>
-			<div th:replace="~{/fragments/errors/fragment-errors-global::frag-errors}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(pseudo)}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(name)}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(firstName)}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(email)}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(phoneNumber)}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(street)}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(zipCode)}"></div>
-			<div th:replace="~{/fragments/errors/fragment-error::frag-error(city)}"></div>
 			
 <!--			<div th:if="${errorMessage}" class="error-message" style="color: red;">-->
 <!--                <p th:text="${errorMessage}"></p>-->

@@ -44,7 +44,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/auctions")
 @SessionAttributes({ "userSession", "categoriesSession", "research" })
 public class AuctionController {
-	private static final Logger auctionLogger = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger auctionLogger = LoggerFactory.getLogger(AuctionController.class);
 
 	private static final int PAGE_SIZE = 6;
 
@@ -276,7 +276,7 @@ public class AuctionController {
 					ObjectError error = new ObjectError("globalError", errorMessage);
 					bindingResult.addError(error);
 					auctionLogger.error("id utilisateur connecté : " + userSession.getUserId()
-							+ " - erreur à la modification d'un article " + err);
+							+ " - erreur à la modification d'un article " + error);
 				});
 				return "article-modify";
 			}

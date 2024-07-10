@@ -5,6 +5,7 @@
     <title th:text="#{title.login}"></title>
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/error.css">
 	<link rel="icon" href="images/favicon.png"/>
 </head>
 <body>
@@ -19,7 +20,7 @@
            	
     <h1 class="title" th:text="#{title.login2}"></h1>
     <form th:action="@{/login}" method="post">
-		<div th:if="${param.error}" class="error-message"></div>
+        <div th:if="${param.error}" class="error-message" th:text="#{error}"></div>
         <div class="input-container">
             <label for="username" th:text="#{identifier}"></label>
 <!--            <input type="text" id="username" name="username" maxlength="30"  required>-->
@@ -41,7 +42,6 @@
                 </div>
             </div>
         </div>
-        <div th:if="${param.error}" class="error-message" th:text="#{error}"></div>
     </form>
     <div class="create-account-container">
         <a th:href="@{/signup}" th:text="#{label.createAccount}"></a>
