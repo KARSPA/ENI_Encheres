@@ -243,6 +243,8 @@ public class AuctionController {
 		model.addAttribute("startTime", startTime);
 		model.addAttribute("endDate", endDate);
 		model.addAttribute("endTime", endTime);
+		model.addAttribute("isCancelPossible",
+				article.getState().equals(ArticleState.NOT_STARTED) || article.getState().equals(ArticleState.STARTED));
 
 		if (bindingResult.hasErrors()) {
 			bindingResult.getAllErrors().forEach(err -> auctionLogger.error("id utilisateur connecté : "
